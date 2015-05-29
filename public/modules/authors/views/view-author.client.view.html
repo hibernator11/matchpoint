@@ -1,0 +1,22 @@
+<section data-ng-controller="AuthorsController" data-ng-init="findOne()">
+    <div class="page-header">
+        <h1 data-ng-bind="author.prefered"></h1>
+    </div>
+    <div class="pull-right" data-ng-show="authentication.user._id">
+        <a class="btn btn-primary" href="/#!/authors/{{author._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn btn-primary" data-ng-click="remove();">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div>
+
+    <span ng-if="author.viaf"><p class="lead"><b>Viaf: </b><a target="_blank" href="http://viaf.org/{{author.viaf}}">{{author.viaf}}</a></p></span>
+    <span ng-if="author.idSource"><b>IdSource: </b><p class="lead" data-ng-bind="author.idSource"></p></span>
+    <span ng-if="author.state"><b>State: </b><p class="lead" data-ng-bind="author.state"></p></span>
+    <span ng-if="author.names"><b>Names: </b><p class="lead" data-ng-bind="author.names"></p></span>
+    <span ng-if="author.date"><b>Date: </b><p class="lead" data-ng-bind="author.date"></p></span>
+    <span ng-if="author.dateName"><b>DateName: </b><p class="lead" data-ng-bind="author.dateName"></p></span>
+    <span ng-if="author.user"><b>User: </b><p class="lead" data-ng-bind="author.user.displayName"></p></span>
+
+</section>

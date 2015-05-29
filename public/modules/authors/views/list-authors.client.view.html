@@ -1,0 +1,133 @@
+<section data-ng-controller="AuthorsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Authors</h1>
+        <row>
+            <form ng-submit="search()" style="margin-bottom:10px;">
+            <fieldset> 
+                <div class="btn-group" dropdown>
+                    <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+                        State <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ng-click="setState('');">All</a></li>
+                        <li><a ng-click="setState('notmatched');">Not Matched</a></li>
+                        <li><a ng-click="setState('matched');">Matched</a></li>
+                        <li><a ng-click="setState('dismissed');">Dismissed</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group" dropdown>
+                    <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+                        Order <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ng-click="setOrder('prefered');">Name</a></li>
+                        <li><a ng-click="setOrder('idSource');">IdSource</a></li>
+                        <li><a ng-click="setOrder('viaf');">Viaf</a></li>
+                    </ul>
+                </div>    
+                <input type="text" ng-model="ftext" placeHolder="Text to search..." />
+                <button type="submit" value="Search" class="btn btn-primary" id="submit" ><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
+            </div>
+            </fieldset>
+            </form>
+        </row>
+        <row>
+        <p>
+            {{authors[0].count}} results
+            <span class="label label-success">Matched</span>
+            <span class="label label-warning">Not matched</span>
+            <span class="label label-info">Dismissed</span>
+        </p>
+        </row>
+    </div>
+
+   <div class="list-group">
+            <ul data-ng-repeat="author in authors[0].results" class="list-group">
+                <li class="{{author.state == 'notmatched' ? 'list-group-item list-group-item-warning' : author.state == 'matched' ? 'list-group-item list-group-item-success' : 'list-group-item list-group-item-info'}}">
+                    <div class="row">
+                        <div class="col-sm-8">
+		            <a data-ng-href="#!/authors/{{author._id}}">
+                                <h4 class="list-group-item-heading">{{author.dateName ? author.dateName : author.prefered}}</h4>
+                                <b>Viaf:</b> <span class="list-group-item-text">{{author.viaf ? author.viaf : "No viaf identifier"}}</span><br>
+				<b>IdSource:</b> <span class="list-group-item-text">{{author.idSource}}</span>
+                            </a>
+                        </div>
+                        <span ng-if="author.viaf && author.viaf!='0 o mas nametype personal'">
+                            <div class="col-sm-4">
+                                <a type="button" target="_blank" ng-href="{{url}}" ng-click="openViafTab(author.viaf)" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-link" aria-hidden="true"></span> Viaf
+                                </a>
+                                <a type="button" target="_blank" ng-href="{{url}}" ng-click="openSearchViafTab(author.dateName ? author.dateName : author.prefered)" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search Viaf
+                                </a>
+                            </div>
+                        </span>
+
+                        <span ng-if="author.viaf && author.viaf=='0 o mas nametype personal'">
+                            <div class="col-sm-4">
+                                <button class="btn btn-default btn-sm" ng-click="open(author.dateName ? author.dateName : author.prefered, 'lg', author._id)"> 
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Match more
+                                </button>
+                                <a type="button" target="_blank" ng-href="{{url}}" ng-click="openSearchViafTab(author.dateName ? author.dateName : author.prefered)" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search Viaf
+                                </a>
+                            </div>
+                        </span>
+
+                        <span ng-if="!author.viaf">
+                            <div class="col-sm-4">
+                                <button data-ng-show="authentication.user._id" class="btn btn-default btn-sm" ng-click="open(author.dateName ? author.dateName : author.prefered, 'lg', author._id)"> 
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Match
+                                </button>
+                                <a type="button" target="_blank" ng-href="{{url}}" ng-click="openSearchViafTab(author.dateName ? author.dateName : author.prefered)" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search Viaf
+                                </a>
+                            </div>
+                        </span>
+                    </div>
+                </li>
+            </ul>     
+	</div>
+
+        <div>
+        <ul class="pager">
+            <li class="{{authors[0].prev ? '' : 'disabled'}}"><a class="{{authors[0].prev ? '' : 'disabled'}}" ng-click="selectPage(authors[0].prev)">Previous</a></li>
+            <li class="{{authors[0].next ? '' : 'disabled'}}"><a ng-click="selectPage(authors[0].next)">Next</a></li>
+        </ul>
+        </div>
+
+        <script ng-controller="AuthorsController" type="text/ng-template" id="viafModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">{{ title }}</h3>
+        </div>
+        <div class="modal-body">
+            <span ng-if="results.authors">
+                <table class="table table-hover">
+                <tr>
+                    <th>Names</th>
+                    <th>Source</th>
+                    <th>Viaf id</th>
+                </tr>
+                <tr ng-click="selected.item = item" ng-repeat="item in results.authors">
+                    <td><span ng-repeat="n in item.names">{{ n.name.__text }}<br></span></td>
+                    <td>{{item.source.__text}}<span ng-repeat="s in item.source | filter:'BNE'"><b>{{ s.__text }}</b><br></span><span ng-repeat="s in item.source | filter:'!BNE'">{{ s.__text }}<br></span></td>
+                    <td><a target="_blank" href="http://viaf.org/{{ item.viafid }}">{{ item.viafid }}</a></td></tr>
+                </table>
+                Selected: <b>{{ selected.item.viafid }}</b>
+            </span>
+            <span ng-if="!results.authors.length">
+                <div class="alert alert-warning" role="alert"><strong>Warning!</strong> No items found.</div>
+            </span>
+
+        </div>
+        <div class="modal-footer">
+            <span ng-if="results.authors.length"><button class="btn btn-primary" ng-click="ok()">OK</button></span>
+            <button class="btn btn-primary" ng-click="dismiss()">Set dismissed</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+	<!--<div class="alert alert-warning text-center" data-ng-if="authors.$resolved && !authors.length">
+		No authors yet, why don't you <a href="/#!/authors/create">create one</a>?
+	</div> -->
+</section>

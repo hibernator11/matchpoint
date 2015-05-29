@@ -1,0 +1,58 @@
+<section data-ng-controller="AuthorsController" data-ng-init="findOne()">
+    <div class="page-header">
+        <h1>Edit Author</h1>
+    </div>
+    <div class="col-md-12">
+        <form name="authorForm" class="form-horizontal" data-ng-submit="update(authorForm.$valid)" novalidate>
+            <fieldset>
+                <div class="form-group" ng-class="{ 'has-error' : submitted && authorForm.prefered.$invalid}">
+                    <label class="control-label" for="title">Prefered</label>
+                    <div class="controls">
+                        <input name="prefered" type="text" data-ng-model="author.prefered" id="prefered" class="form-control" placeholder="Prefered" required>
+                    </div>
+                    <div ng-show="submitted && authorForm.prefered.$invalid" class="help-block">
+                        <p ng-show="authorForm.prefered.$error.required" class="text-danger">Prefered name is required</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="date">Date</label>
+                    <div class="controls">
+                        <input name="date" type="text" data-ng-model="author.date" id="date" class="form-control" cols="30" rows="10" placeholder="Date"></input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="date">Names</label>
+                    <div class="controls">
+                        <input name="names" type="text" data-ng-model="author.names" id="names" class="form-control" cols="30" rows="10" placeholder="Names"></input>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : submitted && authorForm.dateName.$invalid}">
+                    <label class="control-label" for="date">Date name</label>
+                    <div class="controls">
+                        <input name="dateName" type="text" data-ng-model="author.dateName" id="dateName" class="form-control" cols="30" rows="10" placeholder="Date Name"></input>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : submitted && authorForm.viaf.$invalid}">
+                    <label class="control-label" for="viaf">Viaf</label>
+                    <div class="controls">
+                        <input name="viaf" type="text" data-ng-model="author.viaf" id="viaf" class="form-control" cols="30" rows="10" placeholder="Viaf"></input>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : submitted && authorForm.state.$invalid}">
+                    <label class="control-label" for="state">State {{author.state}}</label>
+                    <div class="controls">
+                        <select ng-model="selectedState">
+                            <option ng-repeat="i in inputState" value="{{ i.value }}">{{ i.label }} - {{ i.value }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-default">
+                </div>
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</section>
