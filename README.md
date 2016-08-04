@@ -1,10 +1,10 @@
-[![MEAN.JS Logo](http://meanjs.org/img/logo-small.png)](http://meanjs.org/)
+MATCHPOINTis a Cervantesvirtual Digital Library tool for matching authors to [Virtual International Authority File (VIAF)](http://viaf.org/).
+This sample application matches names using the [VIAF API](https://www.oclc.org/developer/develop/web-services/viaf/authority-cluster.en.html).
 
-[![Build Status](https://travis-ci.org/meanjs/mean.svg?branch=master)](https://travis-ci.org/meanjs/mean)
-[![Dependencies Status](https://david-dm.org/meanjs/mean.svg)](https://david-dm.org/meanjs/mean)
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/meanjs/mean?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+"This service contains [OCLC WorldCat](http://www.worldcat.org/) information made available under the [ODC Attribution License](http://opendatacommons.org/licenses/by/1.0/). The OCLC Cooperative requests that uses of WorldCat derived data contained in this work conform with the [WorldCat Community Norms](http://www.oclc.org/content/mainoclc/worldwide/en_us/worldcat/community/record-use/policy/community-norms.html)."
 
-Cervantesvirtual Digital Library tool for macthing authors to VIAF repository [VIAF](http://viaf.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/) based applications. The idea is to solve the common issues with connecting those frameworks, build a robust framework to support daily development needs, and help developers use better practices while working with popular JavaScript components.
+BVMC Development Team.
+
 
 ## Before You Begin
 Before you begin we recommend you read about the basic building blocks that assemble a MEAN.JS application:
@@ -29,26 +29,6 @@ $ npm install -g bower
 ```bash
 $ npm install -g grunt-cli
 ```
-
-## Downloading MEAN.JS
-There are several ways you can get the MEAN.JS boilerplate:
-
-### Yo Generator
-The recommended way would be to use the [Official Yo Generator](http://meanjs.org/generator.html), which generates the latest stable copy of the MEAN.JS boilerplate and supplies multiple sub-generators to ease your daily development cycles.
-
-### Cloning The GitHub Repository
-You can also use Git to directly clone the MEAN.JS repository:
-```bash
-$ git clone https://github.com/meanjs/mean.git meanjs
-```
-This will clone the latest version of the MEAN.JS repository to a **meanjs** folder.
-
-### Downloading The Repository Zip File
-Another way to use the MEAN.JS boilerplate is to download a zip copy from the [master branch on GitHub](https://github.com/meanjs/mean/archive/master.zip). You can also do this using `wget` command:
-```bash
-$ wget https://github.com/meanjs/mean/archive/master.zip -O meanjs.zip; unzip meanjs.zip; rm meanjs.zip
-```
-Don't forget to rename **mean-master** after your project name.
 
 ## Quick Install
 Once you've downloaded the boilerplate and installed all the prerequisites, you're just a few steps away from starting to develop your MEAN application.
