@@ -1,4 +1,4 @@
-MATCHPOINTis a Cervantesvirtual Digital Library tool for matching authors to [Virtual International Authority File (VIAF)](http://viaf.org/).
+MATCHPOINT is a Cervantesvirtual Digital Library tool for matching authors to [Virtual International Authority File (VIAF)](http://viaf.org/).
 This sample application matches names using the [VIAF API](https://www.oclc.org/developer/develop/web-services/viaf/authority-cluster.en.html).
 
 "This service contains [OCLC WorldCat](http://www.worldcat.org/) information made available under the [ODC Attribution License](http://opendatacommons.org/licenses/by/1.0/). The OCLC Cooperative requests that uses of WorldCat derived data contained in this work conform with the [WorldCat Community Norms](http://www.oclc.org/content/mainoclc/worldwide/en_us/worldcat/community/record-use/policy/community-norms.html)."
