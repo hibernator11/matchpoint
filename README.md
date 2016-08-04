@@ -4,7 +4,7 @@
 [![Dependencies Status](https://david-dm.org/meanjs/mean.svg)](https://david-dm.org/meanjs/mean)
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/meanjs/mean?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-MEAN.JS is a full-stack JavaScript open-source solution, which provides a solid starting point for [MongoDB](http://www.mongodb.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/) based applications. The idea is to solve the common issues with connecting those frameworks, build a robust framework to support daily development needs, and help developers use better practices while working with popular JavaScript components.
+Cervantesvirtual Digital Library tool for macthing authors to VIAF repository [VIAF](http://viaf.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/) based applications. The idea is to solve the common issues with connecting those frameworks, build a robust framework to support daily development needs, and help developers use better practices while working with popular JavaScript components.
 
 ## Before You Begin
 Before you begin we recommend you read about the basic building blocks that assemble a MEAN.JS application:
@@ -99,52 +99,8 @@ And to run only the client tests, run the test:client task:
 $ grunt test:client
 ```
 
-## Development and deployment With Docker
-
-* Install [Docker](http://www.docker.com/)
-* Install [Fig](https://github.com/orchardup/fig)
-
-* Local development and testing with fig:
-```bash
-$ fig up
-```
-
-* Local development and testing with just Docker:
-```bash
-$ docker build -t mean .
-$ docker run -p 27017:27017 -d --name db mongo
-$ docker run -p 3000:3000 --link db:db_1 mean
-$
-```
-
-* To enable live reload, forward port 35729 and mount /app and /public as volumes:
-```bash
-$ docker run -p 3000:3000 -p 35729:35729 -v /Users/mdl/workspace/mean-stack/mean/public:/home/mean/public -v /Users/mdl/workspace/mean-stack/mean/app:/home/mean/app --link db:db_1 mean
-```
-
-## Running in a secure environment
-To run your application in a secure manner you'll need to use OpenSSL and generate a set of self-signed certificates. Unix-based users can use the following command:
-```bash
-$ sh ./scripts/generate-ssl-certs.sh
-```
-Windows users can follow instructions found [here](http://www.websense.com/support/article/kbarticle/How-to-use-OpenSSL-and-Microsoft-Certification-Authority).
-After you've generated the key and certificate, place them in the *config/sslcerts* folder.
-
-## Getting Started With MEAN.JS
-You have your application running, but there is a lot of stuff to understand. We recommend you go over the [Official Documentation](http://meanjs.org/docs.html).
-In the docs we'll try to explain both general concepts of MEAN components and give you some guidelines to help you improve your development process. We tried covering as many aspects as possible, and will keep it updated by your request. You can also help us develop and improve the documentation by checking out the *gh-pages* branch of this repository.
-
-## Community
-* Use the [Official Website](http://meanjs.org) to learn about changes and the roadmap.
-* Join #meanjs on freenode.
-* Discuss it in the new [Google Group](https://groups.google.com/d/forum/meanjs)
-* Ping us on [Twitter](http://twitter.com/meanjsorg) and [Facebook](http://facebook.com/meanjs)
-
-## Live Example
-Browse the live MEAN.JS example on [http://meanjs.herokuapp.com](http://meanjs.herokuapp.com).
-
 ## Credits
-Inspired by the great work of [Madhusudhan Srinivasa](https://github.com/madhums/)
+Inspired by Biblioteca Virtual Miguel de Cervantes [Gustavo Candela, Pilar Escobar](http://www.cervantesvirtual.com/)
 The MEAN name was coined by [Valeri Karpov](http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and)
 
 ## License
